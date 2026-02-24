@@ -13,6 +13,8 @@ import requests
 CURRENT_URL = "https://api.weatherapi.com/v1/current.json"
 FORECAST_URL = "https://api.weatherapi.com/v1/forecast.json"
 
+MAX_FORECAST_DAYS = 3
+
 """
 Retrieves the Weather API key from environment variables.
 @return: The Weather API key as a string.
@@ -65,7 +67,7 @@ def get_current(city_name, unit):
 """
 Fetches weather forecast data for a given city, number of days, and unit of temperature.
 @param city_name: The name of the city to fetch forecast for.
-@param days: The number of days to forecast (1-10).
+@param days: The number of days to forecast (1-MAX_FORECAST_DAYS).
 @param unit: The unit of temperature ("C" for Celsius, "F" for Fahrenheit).
 @return: A list of dictionaries containing forecast data for each day.
 @raises ValueError: If the input parameters are invalid.
@@ -74,8 +76,8 @@ Fetches weather forecast data for a given city, number of days, and unit of temp
 def get_forecast(city_name, days, unit):
     if not city_name:
         raise ValueError("City name cannot be empty")
-    if not (1 <= days <= 10):
-        raise ValueError("Days must be between 1 and 10")
+    if not (1 <= days <= MAX_FORECAST_DAYS):
+        raise ValueError(f"Days must be between 1 and {MAX_FORECAST_DAYS}")
     if unit.upper() not in ("C", "F"):
         raise ValueError("Unit must be C or F")
 
