@@ -3,7 +3,7 @@ A full-stack web application that transforms raw meteorological data into conver
 
 Live Demo: https://weather-forecast-interpreter.onrender.com
 
-To run the project locally:
+## How to run project locally
   - Configure your environmental variables according to the examples given in .env.example file
   - Install the dependencies using the command "pip install -r requirements.txt"
   - Run the server using "python app.py"
